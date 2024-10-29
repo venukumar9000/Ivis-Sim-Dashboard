@@ -36,7 +36,7 @@ public class IvisSimUsageService {
         if (!ivisSimUsageRepository.existsById(id)) {
             throw new ResponseStatusException(HttpStatus.NOT_FOUND, "Usage not found");
         }
-        ivisSimUsage.setId(id);
+        ivisSimUsage.setPkSimUsageId(id);
         return ivisSimUsageRepository.save(ivisSimUsage);
     }
 
