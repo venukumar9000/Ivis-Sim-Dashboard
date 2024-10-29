@@ -10,7 +10,7 @@ import org.springframework.web.bind.annotation.*;
 import java.util.List;
 
 @RestController
-@RequestMapping("/sim_repository")
+@RequestMapping("/api/sim_repository")
 public class IvisSimRepositoryController {
 
     @Autowired

@@ -3,7 +3,7 @@ package com.ivis.simdashboard.service;
 
 import com.ivis.simdashboard.dto.IvisSimRepositoryDto;
 import com.ivis.simdashboard.mapper.IvisSimRepositoryMapper;
-import com.ivis.simdashboard.model.IvisSimRepositoryEntity;
+import com.ivis.simdashboard.model.IvisSimRepEntity;
 import com.ivis.simdashboard.repository.IvisSimRepository;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
@@ -19,13 +19,13 @@ public class IvisSimRepositoryService {
 
 
     public IvisSimRepositoryDto createSim(IvisSimRepositoryDto simDto) {
-        IvisSimRepositoryEntity sim = IvisSimRepositoryMapper.toEntity(simDto,null);
-        IvisSimRepositoryEntity savedSim = ivisSimRepository.save(sim);
+        IvisSimRepEntity sim = IvisSimRepositoryMapper.toEntity(simDto,null);
+        IvisSimRepEntity savedSim = ivisSimRepository.save(sim);
         return IvisSimRepositoryMapper.toDto(savedSim);
     }
 
     public IvisSimRepositoryDto getSimById(Integer id) {
-        IvisSimRepositoryEntity sim = ivisSimRepository.findById(id)
+        IvisSimRepEntity sim = ivisSimRepository.findById(id)
                 .orElseThrow(() -> new RuntimeException("Sim not found with id " + id));
         return IvisSimRepositoryMapper.toDto(sim);
     }
@@ -38,12 +38,12 @@ public class IvisSimRepositoryService {
     }
 
     public IvisSimRepositoryDto updateSim(Integer id, IvisSimRepositoryDto simDto) {
-        IvisSimRepositoryEntity existingSim = ivisSimRepository.findById(id)
+        IvisSimRepEntity existingSim = ivisSimRepository.findById(id)
                 .orElseThrow(() -> new RuntimeException("Sim not found with id " + id));
 
         IvisSimRepositoryMapper.toEntity(simDto, existingSim);
 
-        IvisSimRepositoryEntity updatedSim = ivisSimRepository.save(existingSim);
+        IvisSimRepEntity updatedSim = ivisSimRepository.save(existingSim);
         return IvisSimRepositoryMapper.toDto(updatedSim); // Convert updated Entity to DTO
     }
 

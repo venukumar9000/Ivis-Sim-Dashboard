@@ -1,15 +1,15 @@
 package com.ivis.simdashboard.mapper;
 
 import com.ivis.simdashboard.dto.IvisSimRepositoryDto;
-import com.ivis.simdashboard.model.IvisSimRepositoryEntity;
-
+import com.ivis.simdashboard.model.IvisSimRepEntity;
 import java.time.LocalDateTime;
 
 public class IvisSimRepositoryMapper {
 
-    public static IvisSimRepositoryEntity toEntity(IvisSimRepositoryDto simDto, IvisSimRepositoryEntity existingSim) {
-        IvisSimRepositoryEntity sim = (existingSim != null) ? existingSim : new IvisSimRepositoryEntity();
+    public static IvisSimRepEntity toEntity(IvisSimRepositoryDto simDto, IvisSimRepEntity existingSim) {
+        IvisSimRepEntity sim = (existingSim != null) ? existingSim : new IvisSimRepEntity();
 
+        sim.setSmId(sim.getSmId());
         sim.setMobileNo(simDto.getMobileNo());
         sim.setSimNo(simDto.getSimNo());
         sim.setProvider(simDto.getProvider());
@@ -20,7 +20,9 @@ public class IvisSimRepositoryMapper {
         sim.setActivatedBy(simDto.getActivatedBy());
         sim.setDeactivationDate(simDto.getDeactivationDate());
         sim.setDeactivatedBy(simDto.getDeactivatedBy());
+        sim.setSmDeactivatedBy(sim.getSmDeactivatedBy());
         sim.setFrId(simDto.getFrId());
+        sim.setSmFrId(sim.getSmFrId());
         sim.setUnitId(simDto.getUnitId());
         sim.setType(simDto.getType());
         sim.setCreatedBy(simDto.getCreatedBy());
@@ -41,9 +43,10 @@ public class IvisSimRepositoryMapper {
     }
 
     // Convert Sim entity to SimDto
-    public static IvisSimRepositoryDto toDto(IvisSimRepositoryEntity sim) {
+    public static IvisSimRepositoryDto toDto(IvisSimRepEntity sim) {
         IvisSimRepositoryDto simDto = new IvisSimRepositoryDto();
-        simDto.setId(sim.getId());
+        simDto.setPk_sim_rep_id(sim.getPk_sim_rep_id());
+        simDto.setSmId(sim.getSmId());
         simDto.setMobileNo(sim.getMobileNo());
         simDto.setSimNo(sim.getSimNo());
         simDto.setProvider(sim.getProvider());
@@ -54,7 +57,9 @@ public class IvisSimRepositoryMapper {
         simDto.setActivatedBy(sim.getActivatedBy());
         simDto.setDeactivationDate(sim.getDeactivationDate());
         simDto.setDeactivatedBy(sim.getDeactivatedBy());
+        simDto.setSmDeactivatedBy(sim.getSmDeactivatedBy());
         simDto.setFrId(sim.getFrId());
+        simDto.setSmFrId(sim.getSmFrId());
         simDto.setUnitId(sim.getUnitId());
         simDto.setType(sim.getType());
         simDto.setCreatedBy(sim.getCreatedBy());

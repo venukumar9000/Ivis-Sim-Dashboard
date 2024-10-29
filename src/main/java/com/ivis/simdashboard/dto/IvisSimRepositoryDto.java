@@ -4,13 +4,15 @@ import lombok.AllArgsConstructor;
 import lombok.Data;
 import lombok.NoArgsConstructor;
 
+import javax.security.auth.callback.LanguageCallback;
 import java.time.LocalDateTime;
 
 @Data
 @AllArgsConstructor
 @NoArgsConstructor
 public class IvisSimRepositoryDto {
-    private Integer id;
+    private Integer pk_sim_rep_id;
+    private Integer smId;
     private String mobileNo;
     private String simNo;
     private String provider;
@@ -18,14 +20,16 @@ public class IvisSimRepositoryDto {
     private String simStatus;
     private String hold;
     private LocalDateTime activationDate;
-    private String activatedBy;
+    private Long activatedBy;
     private LocalDateTime deactivationDate;
-    private String deactivatedBy;
+    private Long deactivatedBy;
+    private Long smDeactivatedBy;
     private Integer frId;
+    private Integer smFrId;
     private String unitId;
     private String type;
-    private Integer createdBy;
-    private Integer editedBy;
+    private Long createdBy;
+    private Long editedBy;
     private LocalDateTime createdDate;
     private LocalDateTime editedDate;
     private LocalDateTime unitDismantledDate;
